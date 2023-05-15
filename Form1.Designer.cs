@@ -55,6 +55,7 @@
             label10 = new Label();
             label11 = new Label();
             btn_make26 = new Button();
+            label8 = new Label();
             SuspendLayout();
             // 
             // txt_log
@@ -82,7 +83,7 @@
             txt_folder.Name = "txt_folder";
             txt_folder.Size = new Size(695, 23);
             txt_folder.TabIndex = 2;
-            txt_folder.Text = "D:\\unity\\design\\imgResize\\sample\\212x237_2\\Death";
+            txt_folder.Text = "D:\\unity\\design\\shootC4EI\\new\\player";
             // 
             // btn_change
             // 
@@ -148,11 +149,11 @@
             // 
             // btn_make17
             // 
-            btn_make17.Location = new Point(433, 95);
+            btn_make17.Location = new Point(427, 95);
             btn_make17.Name = "btn_make17";
             btn_make17.Size = new Size(141, 23);
             btn_make17.TabIndex = 10;
-            btn_make17.Text = "17장만들기(루프)";
+            btn_make17.Text = "18장만들기(루프)";
             btn_make17.UseVisualStyleBackColor = true;
             btn_make17.Click += btn_make17_Click;
             // 
@@ -287,15 +288,25 @@
             btn_make26.Name = "btn_make26";
             btn_make26.Size = new Size(208, 23);
             btn_make26.TabIndex = 27;
-            btn_make26.Text = "26장만들기(death3까지준비)";
+            btn_make26.Text = "26장만들기(death0~3까지준비)";
             btn_make26.UseVisualStyleBackColor = true;
             btn_make26.Click += btn_make26_Click;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(12, 59);
+            label8.Name = "label8";
+            label8.Size = new Size(159, 15);
+            label8.TabIndex = 28;
+            label8.Text = "뻥튀기(캐릭터를배경크기로)";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 505);
+            Controls.Add(label8);
             Controls.Add(btn_make26);
             Controls.Add(label11);
             Controls.Add(label10);
@@ -357,5 +368,6 @@
         private Label label10;
         private Label label11;
         private Button btn_make26;
+        private Label label8;
     }
 }

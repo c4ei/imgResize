@@ -4,6 +4,8 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Globalization;
+using System.Text.RegularExpressions;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace imgResize
 {
@@ -64,7 +66,7 @@ namespace imgResize
                 Directory.CreateDirectory(destinationFolder);
             }
             int count = 0;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < 18; i++)
             {
                 string sourceFilePath = Path.Combine(sourceFolder, imageFiles[count]);
                 string destfile = "skeleton-Walk_" + i + ".png";
@@ -131,15 +133,16 @@ namespace imgResize
             {
                 string fileName = Path.GetFileNameWithoutExtension(filePath);
                 txt_log.AppendText("\r\n" + fileName);
-                int numberStartIndex = fileName.Length - 1;
+                int numberStartIndex = fileName.Length - 3; // ÃÖ´ë 999
                 string numberString = fileName.Substring(numberStartIndex);
-                txt_log.AppendText("\r\n" + numberString);
+                numberString = Regex.Replace(numberString, @"[^0-9]", "");
+                //txt_log.AppendText("\r\n" + numberString);
                 int number;
                 if (int.TryParse(numberString, out number))
                 {
                     string newFileName = prefix + numberString + suffix;
                     string newFilePath = Path.Combine(destinationFolder, newFileName);
-                    File.Copy(filePath, newFilePath);
+                    File.Copy(filePath, newFilePath, true);
                     txt_log.AppendText("\r\n" + newFilePath);
                 }
             }
@@ -155,14 +158,14 @@ namespace imgResize
                 Directory.CreateDirectory(destinationFolder);
             }
             int count = 0;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < 26; i++)
             {
                 switch (i)
                 {
-                    case 0 or 1 or 2 or 3 or 4: count = 0; break;
-                    case 5 or 6 or 7 or 8 or 9: count = 1; break;
-                    case 10 or 11 or 12 or 13: count = 2; break;
-                    case 14 or 15 or 16: count = 3; break;
+                    case 0 or 1 or 2 or 3 or 4 or 5 or 6: count = 0; break;
+                    case 7 or 8 or 9 or 10 or 11 or 12 or 13: count = 1; break;
+                    case 14 or 15 or 16 or 17 or 18 or 19 or 20: count = 2; break;
+                    case 21 or 22 or 23 or 24 or 25: count = 3; break;
                 }
 
                 string sourceFilePath = Path.Combine(sourceFolder, imageFiles[count]);
