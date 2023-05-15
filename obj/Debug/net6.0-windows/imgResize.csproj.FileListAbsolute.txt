@@ -1,0 +1,17 @@
+D:\unity\design\imgResize\bin\Debug\net6.0-windows\imgResize.exe
+D:\unity\design\imgResize\bin\Debug\net6.0-windows\imgResize.deps.json
+D:\unity\design\imgResize\bin\Debug\net6.0-windows\imgResize.runtimeconfig.json
+D:\unity\design\imgResize\bin\Debug\net6.0-windows\imgResize.dll
+D:\unity\design\imgResize\bin\Debug\net6.0-windows\imgResize.pdb
+D:\unity\design\imgResize\obj\Debug\net6.0-windows\imgResize.csproj.AssemblyReference.cache
+D:\unity\design\imgResize\obj\Debug\net6.0-windows\imgResize.Form1.resources
+D:\unity\design\imgResize\obj\Debug\net6.0-windows\imgResize.csproj.GenerateResource.cache
+D:\unity\design\imgResize\obj\Debug\net6.0-windows\imgResize.GeneratedMSBuildEditorConfig.editorconfig
+D:\unity\design\imgResize\obj\Debug\net6.0-windows\imgResize.AssemblyInfoInputs.cache
+D:\unity\design\imgResize\obj\Debug\net6.0-windows\imgResize.AssemblyInfo.cs
+D:\unity\design\imgResize\obj\Debug\net6.0-windows\imgResize.csproj.CoreCompileInputs.cache
+D:\unity\design\imgResize\obj\Debug\net6.0-windows\imgResize.dll
+D:\unity\design\imgResize\obj\Debug\net6.0-windows\refint\imgResize.dll
+D:\unity\design\imgResize\obj\Debug\net6.0-windows\imgResize.pdb
+D:\unity\design\imgResize\obj\Debug\net6.0-windows\imgResize.genruntimeconfig.cache
+D:\unity\design\imgResize\obj\Debug\net6.0-windows\ref\imgResize.dll
