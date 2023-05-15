@@ -82,7 +82,7 @@
             txt_folder.Name = "txt_folder";
             txt_folder.Size = new Size(695, 23);
             txt_folder.TabIndex = 2;
-            txt_folder.Text = "D:\\unity\\design\\imgResize\\sample\\212x237_2\\Death";
+            txt_folder.Text = "D:\\unity\\design\\shootC4EI\\new\\Unit002\\MonsterV5_205x189\\run\\output2";
             // 
             // btn_change
             // 

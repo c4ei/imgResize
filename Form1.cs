@@ -4,6 +4,8 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Globalization;
+using System.Text.RegularExpressions;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace imgResize
 {
@@ -131,15 +133,16 @@ namespace imgResize
             {
                 string fileName = Path.GetFileNameWithoutExtension(filePath);
                 txt_log.AppendText("\r\n" + fileName);
-                int numberStartIndex = fileName.Length - 1;
+                int numberStartIndex = fileName.Length - 3; // √÷¥Î 999
                 string numberString = fileName.Substring(numberStartIndex);
-                txt_log.AppendText("\r\n" + numberString);
+                numberString = Regex.Replace(numberString, @"[^0-9]", "");
+                //txt_log.AppendText("\r\n" + numberString);
                 int number;
                 if (int.TryParse(numberString, out number))
                 {
                     string newFileName = prefix + numberString + suffix;
                     string newFilePath = Path.Combine(destinationFolder, newFileName);
-                    File.Copy(filePath, newFilePath);
+                    File.Copy(filePath, newFilePath, true);
                     txt_log.AppendText("\r\n" + newFilePath);
                 }
             }
