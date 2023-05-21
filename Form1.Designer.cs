@@ -56,6 +56,7 @@
             label11 = new Label();
             btn_make26 = new Button();
             label8 = new Label();
+            btn_NameChangeP1 = new Button();
             SuspendLayout();
             // 
             // txt_log
@@ -256,7 +257,7 @@
             // 
             // btn_NameChange
             // 
-            btn_NameChange.Location = new Point(616, 178);
+            btn_NameChange.Location = new Point(605, 173);
             btn_NameChange.Name = "btn_NameChange";
             btn_NameChange.Size = new Size(174, 23);
             btn_NameChange.TabIndex = 24;
@@ -301,11 +302,22 @@
             label8.TabIndex = 28;
             label8.Text = "뻥튀기(캐릭터를배경크기로)";
             // 
+            // btn_NameChangeP1
+            // 
+            btn_NameChangeP1.Location = new Point(605, 197);
+            btn_NameChangeP1.Name = "btn_NameChangeP1";
+            btn_NameChangeP1.Size = new Size(174, 23);
+            btn_NameChangeP1.TabIndex = 29;
+            btn_NameChangeP1.Text = "파일명 번호빼고-1일괄변경";
+            btn_NameChangeP1.UseVisualStyleBackColor = true;
+            btn_NameChangeP1.Click += btn_NameChangeP1_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 505);
+            Controls.Add(btn_NameChangeP1);
             Controls.Add(label8);
             Controls.Add(btn_make26);
             Controls.Add(label11);
@@ -369,5 +381,6 @@
         private Label label11;
         private Button btn_make26;
         private Label label8;
+        private Button btn_NameChangeP1;
     }
 }

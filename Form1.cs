@@ -176,5 +176,40 @@ namespace imgResize
             }
 
         }
+
+        /// <summary>
+        /// skeleton-Walk_.png  를 0부터
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_NameChangeP1_Click(object sender, EventArgs e)
+        {
+            string sourceFolder = txt_folder.Text; // 파일이 저장된 폴더 경로
+            string prefix = txt_newFileName.Text;  // 새 파일명의 앞부분
+            string suffix = ".png"; // 새 파일명의 뒷부분
+            string destinationFolder = txt_folder.Text + "\\rename2";
+            if (!Directory.Exists(destinationFolder))
+            {
+                Directory.CreateDirectory(destinationFolder);
+            }
+            foreach (string filePath in Directory.GetFiles(sourceFolder, "*.png"))
+            {
+                string fileName = Path.GetFileNameWithoutExtension(filePath);
+                txt_log.AppendText("\r\n" + fileName);
+                int numberStartIndex = fileName.Length - 3; // 최대 999
+                string numberString = fileName.Substring(numberStartIndex);
+                numberString = Regex.Replace(numberString, @"[^0-9]", "");
+                //txt_log.AppendText("\r\n" + numberString);
+                int number;
+                if (int.TryParse(numberString, out number))
+                {
+                    int numberString_Minus = Int32.Parse(numberString) - 1;
+                    string newFileName = prefix + numberString_Minus + suffix;
+                    string newFilePath = Path.Combine(destinationFolder, newFileName);
+                    File.Copy(filePath, newFilePath, true);
+                    txt_log.AppendText("\r\n" + newFilePath);
+                }
+            }
+        }
     }
 }
