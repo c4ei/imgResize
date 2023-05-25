@@ -57,15 +57,16 @@
             btn_make26 = new Button();
             label8 = new Label();
             btn_NameChangeP1 = new Button();
+            Btn_ImgFlip = new Button();
             SuspendLayout();
             // 
             // txt_log
             // 
-            txt_log.Location = new Point(12, 226);
+            txt_log.Location = new Point(12, 261);
             txt_log.Multiline = true;
             txt_log.Name = "txt_log";
             txt_log.ScrollBars = ScrollBars.Vertical;
-            txt_log.Size = new Size(776, 267);
+            txt_log.Size = new Size(776, 232);
             txt_log.TabIndex = 0;
             // 
             // btn_folder
@@ -312,11 +313,22 @@
             btn_NameChangeP1.UseVisualStyleBackColor = true;
             btn_NameChangeP1.Click += btn_NameChangeP1_Click;
             // 
+            // Btn_ImgFlip
+            // 
+            Btn_ImgFlip.Location = new Point(12, 217);
+            Btn_ImgFlip.Name = "Btn_ImgFlip";
+            Btn_ImgFlip.Size = new Size(174, 23);
+            Btn_ImgFlip.TabIndex = 30;
+            Btn_ImgFlip.Text = "일괄이미지좌우반전";
+            Btn_ImgFlip.UseVisualStyleBackColor = true;
+            Btn_ImgFlip.Click += Btn_ImgFlip_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 505);
+            Controls.Add(Btn_ImgFlip);
             Controls.Add(btn_NameChangeP1);
             Controls.Add(label8);
             Controls.Add(btn_make26);
@@ -382,5 +394,6 @@
         private Button btn_make26;
         private Label label8;
         private Button btn_NameChangeP1;
+        private Button Btn_ImgFlip;
     }
 }

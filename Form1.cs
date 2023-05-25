@@ -211,5 +211,32 @@ namespace imgResize
                 }
             }
         }
+
+        private void Btn_ImgFlip_Click(object sender, EventArgs e)
+        {
+            string sourceFolder = txt_folder.Text; // 원본 이미지가 있는 폴더 경로
+            string destinationFolder = txt_folder.Text + "\\rename2"; ; // 변경된 이미지를 저장할 폴더 경로
+            if (!Directory.Exists(destinationFolder))
+            {
+                Directory.CreateDirectory(destinationFolder);
+            }
+            // 소스 폴더에 있는 모든 PNG 파일을 가져옵니다.
+            string[] files = Directory.GetFiles(sourceFolder, "*.png");
+
+            foreach (string file in files)
+            {
+                string fileName = Path.GetFileName(file);
+                string targetPath = Path.Combine(destinationFolder, fileName);
+
+                // 이미지를 좌우로 뒤집습니다.
+                using (Image image = Image.FromFile(file))
+                {
+                    image.RotateFlip(RotateFlipType.RotateNoneFlipX);
+                    image.Save(targetPath, ImageFormat.Png);
+                }
+                //Console.WriteLine("변환 완료: " + targetPath);
+            }
+            txt_log.AppendText("\r\n모든 파일 변환 완료.");
+        }
     }
 }
