@@ -58,6 +58,7 @@
             label8 = new Label();
             btn_NameChangeP1 = new Button();
             Btn_ImgFlip = new Button();
+            btnSplit = new Button();
             SuspendLayout();
             // 
             // txt_log
@@ -323,11 +324,22 @@
             Btn_ImgFlip.UseVisualStyleBackColor = true;
             Btn_ImgFlip.Click += Btn_ImgFlip_Click;
             // 
+            // btnSplit
+            // 
+            btnSplit.Location = new Point(204, 217);
+            btnSplit.Name = "btnSplit";
+            btnSplit.Size = new Size(158, 23);
+            btnSplit.TabIndex = 31;
+            btnSplit.Text = "split이미지생성";
+            btnSplit.UseVisualStyleBackColor = true;
+            btnSplit.Click += btnSplit_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 505);
+            Controls.Add(btnSplit);
             Controls.Add(Btn_ImgFlip);
             Controls.Add(btn_NameChangeP1);
             Controls.Add(label8);
@@ -395,5 +407,6 @@
         private Label label8;
         private Button btn_NameChangeP1;
         private Button Btn_ImgFlip;
+        private Button btnSplit;
     }
 }

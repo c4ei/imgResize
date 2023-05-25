@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace imgResize
 {
@@ -105,7 +106,7 @@ namespace imgResize
 
         private static void ResizeImage(string sourceFilePath, string destinationFilePath, int newWidth, int newHeight)
         {
-            using (Image sourceImage = Image.FromFile(sourceFilePath))
+            using (System.Drawing.Image sourceImage = System.Drawing.Image.FromFile(sourceFilePath))
             {
                 using (Bitmap bitmap = new Bitmap(newWidth, newHeight))
                 {
@@ -215,7 +216,7 @@ namespace imgResize
         private void Btn_ImgFlip_Click(object sender, EventArgs e)
         {
             string sourceFolder = txt_folder.Text; // 원본 이미지가 있는 폴더 경로
-            string destinationFolder = txt_folder.Text + "\\rename2"; ; // 변경된 이미지를 저장할 폴더 경로
+            string destinationFolder = txt_folder.Text + "\\flip"; ; // 변경된 이미지를 저장할 폴더 경로
             if (!Directory.Exists(destinationFolder))
             {
                 Directory.CreateDirectory(destinationFolder);
@@ -229,7 +230,7 @@ namespace imgResize
                 string targetPath = Path.Combine(destinationFolder, fileName);
 
                 // 이미지를 좌우로 뒤집습니다.
-                using (Image image = Image.FromFile(file))
+                using (System.Drawing.Image image = System.Drawing.Image.FromFile(file))
                 {
                     image.RotateFlip(RotateFlipType.RotateNoneFlipX);
                     image.Save(targetPath, ImageFormat.Png);
@@ -237,6 +238,74 @@ namespace imgResize
                 //Console.WriteLine("변환 완료: " + targetPath);
             }
             txt_log.AppendText("\r\n모든 파일 변환 완료.");
+        }
+
+        private void btnSplit_Click(object sender, EventArgs e)
+        {
+
+            string sourceFolder = txt_folder.Text; // 원본 이미지가 있는 폴더 경로
+            string destinationFolder = txt_folder.Text + "\\split"; ; // 변경된 이미지를 저장할 폴더 경로
+            if (!Directory.Exists(destinationFolder))
+            {
+                Directory.CreateDirectory(destinationFolder);
+            }
+
+            int n = 0; // 한 행에 들어갈 이미지 개수
+
+            // 폴더에서 이미지 파일 목록 가져오기
+            string[] imageFiles = Directory.GetFiles(sourceFolder, "*.png");
+            if (imageFiles.Length == 0)
+            {
+                txt_log.AppendText("\r\n폴더에 이미지 파일이 없습니다.");
+                return;
+            }
+
+            int imageWidth,imageHeight, canvasWidth,canvasHeight = 0;
+
+            // 이미지 파일의 크기로 한 행에 들어갈 이미지 개수 계산
+            using (var image = new Bitmap(imageFiles[0]))
+            {
+                imageWidth = image.Width;
+                imageHeight = image.Height;
+
+                canvasWidth = imageWidth * imageFiles.Length;
+                canvasHeight = imageHeight;
+
+                // 캔버스 크기로 한 행에 들어갈 이미지 개수 계산
+                n = canvasWidth / imageWidth;
+            }
+
+            // 이미지 파일 목록이 n보다 작으면 n을 파일 개수로 설정
+            if (imageFiles.Length < n)
+            {
+                n = imageFiles.Length;
+            }
+
+            // 캔버스 생성
+            Bitmap canvas = new Bitmap(n * imageWidth, canvasHeight);
+            Graphics graphics = Graphics.FromImage(canvas);
+
+            // 이미지 파일 개수만큼 반복하여 합성
+            for (int i = 0; i < n; i++)
+            {
+                // 이미지 파일 로드
+                Bitmap image = new Bitmap(imageFiles[i]);
+
+                // 이미지를 캔버스에 그리기
+                graphics.DrawImage(image, i * imageWidth, 0);
+
+                // 사용한 이미지 객체 해제
+                image.Dispose();
+            }
+
+            // 캔버스를 파일로 저장
+            string outputFilePath = destinationFolder+"\\split.png";
+            canvas.Save(outputFilePath);
+
+            // 사용한 리소스 해제
+            graphics.Dispose();
+            canvas.Dispose();
+            txt_log.AppendText("\r\n이미지 합성이 완료되었습니다.");
         }
     }
 }
